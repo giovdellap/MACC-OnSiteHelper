@@ -1,6 +1,9 @@
 package com.giovdellap.onsitehelper.projects
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -16,27 +19,24 @@ class ProjectsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProjectsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("TAG", "Projects Activity")
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityProjectsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        val arrayAdapter: ArrayAdapter<*>
+        val projects = arrayOf(
+            "Virat Kohli", "Rohit Sharma", "Steve Smith",
+            "Kane Williamson", "Ross Taylor"
+        )
 
-        val navController = findNavController(R.id.nav_host_fragment_content_projects)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
-        }
+        // access the listView from xml file
+        var mListView = findViewById<ListView>(R.id.listview)
+        arrayAdapter = ArrayAdapter(this,
+            android.R.layout.simple_list_item_1, projects)
+        mListView.adapter = arrayAdapter
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_projects)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
 }

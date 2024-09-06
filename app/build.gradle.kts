@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.activity)
     implementation(libs.firebase)
+    implementation(libs.gson)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
