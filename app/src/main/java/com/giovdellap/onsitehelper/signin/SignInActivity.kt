@@ -1,5 +1,6 @@
 package com.giovdellap.onsitehelper.signin
 
+import android.content.Context
 import android.content.Intent
 import android.credentials.GetCredentialException
 import androidx.credentials.GetCredentialRequest
@@ -109,19 +110,33 @@ class SignInActivity : AppCompatActivity() {
                 Log.d("TAG", firebaseCredential.toString())
                 Log.d("TAG", firebaseCredential.signInMethod)
 
-                val context = this.applicationContext
+                auth.signInWithCredential(firebaseCredential)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("TAG", "signInWithCredential:success")
+                            val user = auth.currentUser
+                            if(user != null) {
+                                val email = user.getEmail()
+                                if (email != null) {
+                                    val sharedPreferences = this.getSharedPreferences("OnSiteHelper", Context.MODE_PRIVATE)
+                                    sharedPreferences.edit().putString("uid", user.uid).apply()
+                                    sharedPreferences.edit().putString("email", email).apply()
 
-                lifecycleScope.launch {
-                    try {
-                        val firebaseAuth = auth.signInWithCredential(firebaseCredential).await().user
-                        Log.d("TAG", firebaseAuth.email )
-                        val intent = Intent(context, ProjectsActivity::class.java)
-                        startActivity(intent)
-                    } catch(e: Exception) {
-                        Log.d("TAG", e.toString())
+                                    val ao = sharedPreferences.getString("email", "")
+
+                                    val intent = Intent(this, ProjectsActivity::class.java)
+                                    startActivity(intent)
+                                }
+                                Log.d("TAG", user.uid)
+
+                            }
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("TAG", "signInWithCredential:failure", task.exception)
+                        }
                     }
-
-                }
                         // Send googleIdTokenCredential to your server for validation and authentication
             } catch (e: GoogleIdTokenParsingException) {
                 Log.e("TAG", "Received an invalid google id token response", e)

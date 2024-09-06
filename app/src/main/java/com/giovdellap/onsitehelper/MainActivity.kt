@@ -27,11 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         Log.d("TAG", "main before switch")
-
-        val serviceIntent = Intent(this, APIService::class.java)
-        startService(serviceIntent)
 
         val intent = Intent(this, SignInActivity::class.java)
         startActivity(intent)
