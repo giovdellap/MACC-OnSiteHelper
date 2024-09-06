@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "626011010926",
+    "project_id": "macc-giovdellap",
+    "storage_bucket": "macc-giovdellap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626011010926:android:0727a7c16248e8dc01337f",
+        "android_client_info": {
+          "package_name": "com.giovdellap.onsitehelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626011010926-1819a6f3e3kka4rd6no3rfi6ibqb1k5a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.giovdellap.onsitehelper",
+            "certificate_hash": "2f79e50c435c9804b5871873a8c8abbcc0c835bc"
+          }
+        },
+        {
+          "client_id": "626011010926-vvhmjnjkbrqrkfbro71ne2sv7tpb9dsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2Hk7kwB_B2azVtP0uPj1tWgHiGUtcqmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626011010926-jhl0pjflckdpctmabcjmia2q8qprq1n6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

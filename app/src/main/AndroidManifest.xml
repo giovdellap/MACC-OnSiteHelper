@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnSiteHelper"
         tools:targetApi="31">
+        <service
+            android:name=".APIService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity
+            android:name=".projects.ProjectsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OnSiteHelper" />
+        <activity
+            android:name=".signin.SignInActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
