@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.services)
+    kotlin("plugin.serialization") version "2.0.20"
+    //kotlin("multiplatform") version "2.0.20"
+
 }
 
 android {
@@ -58,6 +61,13 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.firebase)
     implementation(libs.gson)
+    implementation(libs.ktor)
+    implementation(libs.ktor.cio)
+    implementation("io.ktor:ktor-serialization-gson:2.3.12")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.2")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.12")
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
