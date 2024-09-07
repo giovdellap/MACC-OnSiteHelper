@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,13 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnSiteHelper"
         android:usesCleartextTraffic="true"
-
         tools:targetApi="34">
+        <activity
+            android:name=".newproject.NewProjectActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OnSiteHelper" />
         <activity
             android:name=".projects.ProjectsActivity"
             android:exported="false"
             android:theme="@style/Theme.OnSiteHelper" />
-
         <activity
             android:name=".signin.SignInActivity"
             android:exported="false" />

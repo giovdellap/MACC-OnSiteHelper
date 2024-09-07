@@ -70,10 +70,8 @@ class ProjectsActivity : AppCompatActivity() {
             val response: ListResponse = httpclient.get(url).body()
 
             projects = response.data
-            Log.d("TAG", Gson().toJson(projects))
 
             val arrayAdapter: ArrayAdapter<*>
-            Log.d("TAG", "A")
 
             var strings: ArrayList<String> = ArrayList()
             for (item in projects) {
