@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.google.services)
     kotlin("plugin.serialization") version "2.0.20"
     //kotlin("multiplatform") version "2.0.20"
-
+    alias(libs.plugins.secrets)
 }
 
 android {
@@ -66,6 +66,14 @@ dependencies {
     implementation("io.ktor:ktor-serialization-gson:2.3.12")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.2")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.12")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    implementation(libs.play.services.maps)
+    implementation(libs.camera.core)
+    implementation(libs.camera.camera2)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.camera.video)
+    implementation(libs.camera.view)
+    implementation(libs.camera.extensions)
 
 
     testImplementation(libs.junit)

@@ -123,7 +123,7 @@ class SignInActivity : AppCompatActivity() {
                                     sharedPreferences.edit().putString("uid", user.uid).apply()
                                     sharedPreferences.edit().putString("email", email).apply()
 
-                                    val ao = sharedPreferences.getString("email", "")
+                                    //val ao = sharedPreferences.getString("email", "")
 
                                     val intent = Intent(this, ProjectsActivity::class.java)
                                     startActivity(intent)

@@ -1,8 +1,11 @@
 package com.giovdellap.onsitehelper.projects
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -12,6 +15,8 @@ import com.giovdellap.onsitehelper.databinding.ActivityProjectsBinding
 import com.giovdellap.onsitehelper.model.ListRequest
 import com.giovdellap.onsitehelper.model.ListResponse
 import com.giovdellap.onsitehelper.model.Project
+import com.giovdellap.onsitehelper.newproject.NewProjectActivity
+import com.giovdellap.onsitehelper.project.ProjectActivity
 import com.google.gson.Gson
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -53,7 +58,7 @@ class ProjectsActivity : AppCompatActivity() {
         if (user != null) {
             content = user
         }
-        val client = HttpClient()
+
         Log.d("TAG", "prima di launch")
         lifecycleScope.launch {
             val httpclient = HttpClient(CIO) {
@@ -75,21 +80,49 @@ class ProjectsActivity : AppCompatActivity() {
 
             var strings: ArrayList<String> = ArrayList()
             for (item in projects) {
-                strings.add(item.title)
+                strings.add(item.id + " - " + item.title)
             }
             val projectsArray = strings.toTypedArray()
             Log.d("AO", Gson().toJson(projectsArray))
 
 
             // access the listView from xml file
-            var mListView = findViewById<ListView>(R.id.listview)
+            var mListView: ListView= findViewById(R.id.listview)
             arrayAdapter = ArrayAdapter(
                 context,
                 android.R.layout.simple_list_item_1, projectsArray
             )
             mListView.adapter = arrayAdapter
+
+            mListView.onItemClickListener = AdapterView.OnItemClickListener {
+                    parent,view, position, id ->
+                // Get the selected item text from ListView
+                val selectedItem = parent.getItemAtPosition(position) as String
+                var selectedProj: Project = Project(emptyList())
+                for (proj in projects) {
+                    var listName = proj.id + " - " + proj.title
+                    if(selectedItem == listName) {
+                        selectedProj = proj
+                    }
+                }
+                if (selectedProj.title != "") {
+                    val intent = Intent(context, ProjectActivity::class.java)
+
+                    sharedPreferences.edit().putString("projectId", selectedProj.id).apply()
+                    sharedPreferences.edit().putString("projectAuthor", selectedProj.author).apply()
+
+                    startActivity(intent)
+                }
+
+            }
+
         }
 
+        val newProjButton: Button = findViewById(R.id.newProjectButton)
+        newProjButton.setOnClickListener {
+            val intent = Intent(this, NewProjectActivity::class.java)
+            startActivity(intent)
+        }
 
 
         //val policy = StrictMode.ThreadPolicy.Builder().permitAll().build();

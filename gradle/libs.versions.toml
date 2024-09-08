@@ -20,11 +20,11 @@ annotation = "1.6.0"
 activity = "1.9.1"
 firebase-auth = "23.0.0"
 google-services="4.4.2"
-coroutines = "1.7.3"
 gson = "2.10.1"
 ktor = "2.3.12"
-kotlinx-serialization-json = "1.7.2"
-kotlin-serialization-plugin = "1.7.2"
+secrets = "2.0.1"
+play-services-maps = "17.0.0"
+camerax_version = "1.2.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,10 +49,20 @@ firebase = { group = "com.google.firebase", name = "firebase-auth", version.ref 
 gson = {group = "com.google.code.gson", name = "gson", version.ref = "gson"}
 ktor = {group = "io.ktor", name = "ktor-client-core", version.ref = "ktor"}
 ktor-cio = {group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor"}
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "play-services-maps" }
+camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "camerax-version"}
+camera-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "camerax-version"}
+camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax-version"}
+camera-video = { group = "androidx.camera", name = "camera-video", version.ref = "camerax-version"}
+camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax-version"}
+camera-extensions = { group = "androidx.camera", name = "camera-extensions", version.ref = "camerax-version"}
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
+secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
+project-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version = "2.1.0"}
+
 

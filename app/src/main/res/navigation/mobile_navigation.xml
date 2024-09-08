@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_new">
+
+    <fragment
+        android:id="@+id/navigation_new"
+        android:name="com.giovdellap.onsitehelper.project.ui.newposition.NewPositionFragment"
+        android:label="New Location"
+        tools:layout="@layout/fragment_new" >
+    <action
+        android:id="@+id/action_NewPosition_to_List"
+        app:destination="@id/navigation_list" />
+        <action
+            android:id="@+id/action_NewPosition_to_Camera"
+            app:destination="@id/navigation_camera" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_list"
+        android:name="com.giovdellap.onsitehelper.project.ui.list.ListFragment"
+        android:label="List"
+        tools:layout="@layout/fragment_list" />
+
+    <fragment
+        android:id="@+id/navigation_map"
+        android:name="com.giovdellap.onsitehelper.project.ui.map.MapFragment"
+        android:label="Map"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/navigation_camera"
+        android:name="com.giovdellap.onsitehelper.project.ui.camera.CameraFragment"
+        android:label="Camera"
+        tools:layout="@layout/fragment_camera">
+        <action
+            android:id="@+id/action_Camera_to_NewPosition"
+            app:destination="@id/navigation_new" />
+    </fragment>
+
+
+</navigation>

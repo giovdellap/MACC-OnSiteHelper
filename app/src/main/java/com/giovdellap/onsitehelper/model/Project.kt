@@ -9,6 +9,7 @@ class Project(val editors: List<String>) {
     val id: String = ""
     val title: String = ""
     val description: String = ""
+    val author: String = ""
 
 
 }
