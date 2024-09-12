@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.giovdellap.onsitehelper.R
 import com.giovdellap.onsitehelper.model.PositionListResponse
 import io.ktor.client.HttpClient
@@ -26,6 +27,7 @@ import io.ktor.serialization.gson.gson
 import kotlinx.coroutines.launch
 import com.giovdellap.onsitehelper.databinding.FragmentListBinding
 import com.giovdellap.onsitehelper.model.Position
+import com.giovdellap.onsitehelper.model.address
 import com.google.gson.Gson
 
 class ListFragment : Fragment() {
@@ -67,7 +69,7 @@ class ListFragment : Fragment() {
                 }
             }
 
-            val url = "http://192.168.1.65:5001/macc/getPositions/" + user + "/" + id
+            val url = address + "/getPositions/" + user + "/" + id
             val response: PositionListResponse = httpclient.get(url).body()
 
             val positions = response.data
@@ -94,15 +96,18 @@ class ListFragment : Fragment() {
                 AdapterView.OnItemClickListener { parent, view, position, id ->
                     // Get the selected item text from ListView
                     val selectedItem = parent.getItemAtPosition(position) as String
-                    var selectedPos: Position = Position("", "", "", "")
+                    var selectedPos: Position = Position()
                     for (pos in positions) {
                         if (selectedItem == pos.title) {
                             selectedPos = pos
                         }
                     }
+                    sharedPreferences.edit().putString("current_position", Gson().toJson(selectedPos)).apply()
                     if (selectedPos.title != "") {
                         Log.d("TAG", "project " + selectedPos.title)
                     }
+                    findNavController().navigate(R.id.action_List_to_Detail)
+
 
                 }
         }

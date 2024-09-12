@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.giovdellap.onsitehelper.R
 import com.giovdellap.onsitehelper.databinding.FragmentMapBinding
 import com.giovdellap.onsitehelper.model.PositionListResponse
+import com.giovdellap.onsitehelper.model.address
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
@@ -64,7 +65,7 @@ class MapFragment : Fragment() {
                 }
             }
 
-            val url = "http://192.168.1.65:5001/macc/getPositions/" + user + "/" + id
+            val url = address + "/getPositions/" + user + "/" + id
             val response: PositionListResponse = httpclient.get(url).body()
             Log.d("TAG", "B")
 

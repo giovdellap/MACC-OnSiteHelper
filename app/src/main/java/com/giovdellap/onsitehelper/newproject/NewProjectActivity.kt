@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.giovdellap.onsitehelper.R
 import com.giovdellap.onsitehelper.databinding.ActivityNewProjectBinding
 import com.giovdellap.onsitehelper.model.NewProjectRequest
+import com.giovdellap.onsitehelper.model.address
 import com.giovdellap.onsitehelper.projects.ProjectsActivity
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -66,6 +67,7 @@ class NewProjectActivity : AppCompatActivity() {
             Log.d("TAG", title)
             Log.d("TAG", description)
 
+
             lifecycleScope.launch {
                 val httpclient = HttpClient(CIO) {
                     install(HttpTimeout) {
@@ -77,7 +79,7 @@ class NewProjectActivity : AppCompatActivity() {
 
                 }
 
-                val url = "http://192.168.1.65:5001/macc/newProject"
+                val url = address + "/newProject"
                 val response = httpclient.post(url) {
                     contentType(ContentType.Application.Json)
                     setBody(NewProjectRequest(content, title, description))

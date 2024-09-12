@@ -15,6 +15,7 @@ import com.giovdellap.onsitehelper.databinding.ActivityProjectsBinding
 import com.giovdellap.onsitehelper.model.ListRequest
 import com.giovdellap.onsitehelper.model.ListResponse
 import com.giovdellap.onsitehelper.model.Project
+import com.giovdellap.onsitehelper.model.address
 import com.giovdellap.onsitehelper.newproject.NewProjectActivity
 import com.giovdellap.onsitehelper.project.ProjectActivity
 import com.google.gson.Gson
@@ -71,7 +72,8 @@ class ProjectsActivity : AppCompatActivity() {
 
             }
 
-            val url = "http://192.168.1.65:5001/macc/getProjects/" + content
+            val url = address + "/getProjects/" + content
+            Log.d("TAGs", url)
             val response: ListResponse = httpclient.get(url).body()
 
             projects = response.data

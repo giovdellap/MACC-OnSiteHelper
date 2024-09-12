@@ -4,45 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".project.ui.camera.CameraFragment">
+    tools:context=".project.ui.imagepreview.ImagePreviewFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.camera.view.PreviewView
-            android:id="@+id/viewFinder"
-            android:layout_width="398dp"
-            android:layout_height="605dp"
+        <Button
+            android:id="@+id/backbutton"
+            android:layout_width="229dp"
+            android:layout_height="73dp"
+            android:text="Back to Camera"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.76" />
 
         <Button
-            android:id="@+id/backButton"
-            android:layout_width="48dp"
-            android:layout_height="50dp"
-            android:text="Back"
+            android:id="@+id/savebutton"
+            android:layout_width="230dp"
+            android:layout_height="66dp"
+            android:text="Save in Position"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.83" />
+            app:layout_constraintVertical_bias="0.898" />
 
-        <Button
-            android:id="@+id/takephotobutton"
-            android:layout_width="153dp"
-            android:layout_height="127dp"
-            android:text="TAKE PHOTO"
+        <ImageView
+            android:id="@+id/imageViewPreview"
+            android:layout_width="336dp"
+            android:layout_height="358dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.944" />
-
+            app:layout_constraintVertical_bias="0.24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

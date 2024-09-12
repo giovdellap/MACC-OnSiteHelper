@@ -22,7 +22,11 @@
         android:id="@+id/navigation_list"
         android:name="com.giovdellap.onsitehelper.project.ui.list.ListFragment"
         android:label="List"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+    <action
+        android:id="@+id/action_List_to_Detail"
+        app:destination="@id/navigation_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_map"
@@ -38,6 +42,31 @@
         <action
             android:id="@+id/action_Camera_to_NewPosition"
             app:destination="@id/navigation_new" />
+        <action
+            android:id="@+id/action_Camera_to_Preview"
+            app:destination="@id/navigation_preview" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_preview"
+        android:name="com.giovdellap.onsitehelper.project.ui.imagepreview.ImagePreviewFragment"
+        android:label="Preview"
+        tools:layout="@layout/fragment_image_preview">
+        <action
+            android:id="@+id/action_Preview_to_NewPosition"
+            app:destination="@id/navigation_new" />
+        <action
+            android:id="@+id/action_Preview_to_Camera"
+            app:destination="@id/navigation_camera" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_detail"
+        android:name="com.giovdellap.onsitehelper.project.ui.positiondetail.PositionDetailFragment"
+        android:label="Position Detail"
+        tools:layout="@layout/fragment_position_detail">
+        <action
+            android:id="@+id/action_Detail_to_List"
+            app:destination="@id/navigation_list" />
     </fragment>
 
 
