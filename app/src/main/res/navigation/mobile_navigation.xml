@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_NewPosition_to_Camera"
             app:destination="@id/navigation_camera" />
+        <action
+            android:id="@+id/action_NewPosition_to_Detail"
+            app:destination="@id/navigation_detail" />
     </fragment>
 
     <fragment
@@ -23,16 +26,23 @@
         android:name="com.giovdellap.onsitehelper.project.ui.list.ListFragment"
         android:label="List"
         tools:layout="@layout/fragment_list" >
-    <action
-        android:id="@+id/action_List_to_Detail"
-        app:destination="@id/navigation_detail" />
+        <action
+            android:id="@+id/action_List_to_Detail"
+            app:destination="@id/navigation_detail" />
+        <action
+            android:id="@+id/action_List_to_List"
+            app:destination="@id/navigation_list" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_map"
         android:name="com.giovdellap.onsitehelper.project.ui.map.MapFragment"
         android:label="Map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+    <action
+        android:id="@+id/action_Map_to_Detail"
+        app:destination="@id/navigation_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_camera"
@@ -67,6 +77,21 @@
         <action
             android:id="@+id/action_Detail_to_List"
             app:destination="@id/navigation_list" />
+        <action
+            android:id="@+id/action_Detail_to_Map"
+            app:destination="@id/navigation_map" />
+        <action
+            android:id="@+id/action_Detail_to_New"
+            app:destination="@id/navigation_new" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_projectdetail"
+        android:name="com.giovdellap.onsitehelper.project.ui.projectdetail.ProjectDetailFragment"
+        android:label="Project Details"
+        tools:layout="@layout/fragment_project_detail" >
+        <action
+            android:id="@+id/action_ProjectDetail_to_ProjectDetail"
+            app:destination="@id/navigation_projectdetail" />
     </fragment>
 
 

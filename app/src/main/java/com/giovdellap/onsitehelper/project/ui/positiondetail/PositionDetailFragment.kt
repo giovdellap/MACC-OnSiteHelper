@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.location.Location
 import android.location.LocationManager
 import android.net.Uri
@@ -34,7 +35,6 @@ import com.giovdellap.onsitehelper.R
 import com.giovdellap.onsitehelper.databinding.FragmentPositionDetailBinding
 import com.giovdellap.onsitehelper.model.NewPositionRequest
 import com.giovdellap.onsitehelper.model.Position
-import com.giovdellap.onsitehelper.model.address
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.gson.Gson
@@ -44,9 +44,11 @@ import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.forms.formData
 import io.ktor.client.request.forms.submitFormWithBinaryData
+import io.ktor.client.request.get
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.readBytes
 import io.ktor.http.ContentType
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
@@ -54,6 +56,7 @@ import io.ktor.http.contentType
 import io.ktor.serialization.gson.gson
 import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.launch
+import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.io.OutputStream
 import java.io.File
@@ -83,6 +86,8 @@ class PositionDetailFragment : Fragment() {
         Log.d(TAG, "OnviewCreated")
 
         val sharedPreferences = requireContext().applicationContext.getSharedPreferences("OnSiteHelper", MODE_PRIVATE)
+        val address = sharedPreferences.getString("address", "")
+        val imageServer = sharedPreferences.getString("imageServer", "")
         val pos_string = sharedPreferences.getString("current_position", "")
         val position: Position = Gson().fromJson<Position>(pos_string, Position::class.java)
 
@@ -91,9 +96,33 @@ class PositionDetailFragment : Fragment() {
         binding.latitudeTextView.text = "Latitude: " + position.latitude
         binding.longitudeTextView.text = "Longitude: " + position.longitude
 
+        lifecycleScope.launch {
+            Log.d(TAG, "in lifescope")
+            val httpclient = HttpClient(CIO) {
+                install(HttpTimeout) {
+                    requestTimeoutMillis = 20000
+                }
+            }
+
+            Log.d(TAG, position.image)
+            val url = imageServer + "/images/" + position.image
+            Log.d(TAG, url)
+            val res = httpclient.get(url).readBytes()
+            Log.d(TAG, "after res")
+            val stream: InputStream = ByteArrayInputStream(res)
+            val bm = BitmapFactory.decodeStream(stream)
+
+            binding.detailImageView.setImageBitmap(bm)
+        }
+
+        binding.backButton.text = "<"
         binding.backButton.setOnClickListener {
-            Log.d(TAG, "OnviewCreated - cameraButton pressed")
-            findNavController().navigate(R.id.action_Detail_to_List)
+            Log.d(TAG, "OnviewCreated - backbutton")
+            val prevFragment = sharedPreferences.getString("prevFragment", "")
+            if (prevFragment == "LIST") findNavController().navigate(R.id.action_Detail_to_List)
+            if (prevFragment == "MAP") findNavController().navigate(R.id.action_Detail_to_Map)
+            if (prevFragment == "NEW") findNavController().navigate(R.id.action_Detail_to_New)
+
         }
 
     }

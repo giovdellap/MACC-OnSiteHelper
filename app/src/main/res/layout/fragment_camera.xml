@@ -12,37 +12,38 @@
 
         <androidx.camera.view.PreviewView
             android:id="@+id/viewFinder"
-            android:layout_width="398dp"
-            android:layout_height="605dp"
+            android:layout_width="299dp"
+            android:layout_height="521dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.121" />
 
         <Button
             android:id="@+id/backButton"
             android:layout_width="48dp"
             android:layout_height="50dp"
-            android:text="Back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintHorizontal_bias="0.051"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.83" />
+            app:layout_constraintVertical_bias="0.837" />
 
         <Button
             android:id="@+id/takephotobutton"
-            android:layout_width="153dp"
-            android:layout_height="127dp"
-            android:text="TAKE PHOTO"
+            android:layout_width="108dp"
+            android:layout_height="96dp"
+            android:text="O"
+            android:textSize="70sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.944" />
+            app:layout_constraintVertical_bias="0.867" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

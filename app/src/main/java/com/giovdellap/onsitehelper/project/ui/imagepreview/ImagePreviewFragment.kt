@@ -27,8 +27,6 @@ import com.giovdellap.onsitehelper.R
 import com.giovdellap.onsitehelper.databinding.FragmentImagePreviewBinding
 import com.giovdellap.onsitehelper.model.AddImageRequest
 import com.giovdellap.onsitehelper.model.AddImageResponse
-import com.giovdellap.onsitehelper.model.address
-import com.giovdellap.onsitehelper.model.imageServer
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
@@ -80,6 +78,8 @@ class ImagePreviewFragment : Fragment() {
         val context = requireContext().applicationContext
 
         val sharedPreferences = context.getSharedPreferences("OnSiteHelper", MODE_PRIVATE)
+        val address = sharedPreferences.getString("address", "")
+        val imageServer = sharedPreferences.getString("imageServer", "")
         val uri_temp = sharedPreferences.getString("image_uri", "")
         if(uri_temp != null) loc_uri = Uri.parse(uri_temp)
 
@@ -108,7 +108,6 @@ class ImagePreviewFragment : Fragment() {
 
                 bm = BitmapFactory.decodeStream(FileInputStream(tempFile))
                 val baos = ByteArrayOutputStream()
-                Log.d(TAG, baos.toString())
                 bm.compress(Bitmap.CompressFormat.JPEG, 100, baos) //bm is the bitmap object
                 val b = baos.toByteArray()
                 encodedImage = Base64.encodeToString(b, Base64.DEFAULT)
@@ -142,7 +141,7 @@ class ImagePreviewFragment : Fragment() {
 
 
         binding.savebutton.setOnClickListener {
-
+            Log.d(TAG, "savebutton pressed")
             lifecycleScope.launch {
 
                 val url = imageServer + "/images/upload"

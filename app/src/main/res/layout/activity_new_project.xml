@@ -11,63 +11,87 @@
         android:id="@+id/textView2"
         android:layout_width="222dp"
         android:layout_height="61dp"
-        android:text="Create New Project"
+        android:text="NEW PROJECT"
+        android:textSize="25sp"
+        android:fontFamily="@font/montserrat_semibold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.036" />
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="60dp"
-        android:layout_height="54dp"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="62dp"
+        android:layout_height="61dp"
+        android:textSize="30sp"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@null"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/montserrat_extrabold"        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.036" />
 
     <EditText
         android:id="@+id/titleEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Enter project title"
         android:inputType="text"
-        android:text="Project Title"
+        android:fontFamily="@font/montserrat_semibold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.137" />
 
     <EditText
         android:id="@+id/descriptionEditText"
-        android:layout_width="323dp"
-        android:layout_height="230dp"
+        android:layout_width="285dp"
+        android:layout_height="207dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:hint="Enter project description"
+        android:fontFamily="@font/montserrat_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.213"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338" />
+        app:layout_constraintVertical_bias="0.311" />
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="190dp"
         android:layout_height="81dp"
         android:text="Create Project"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@null"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/montserrat_extrabold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.755" />
+
+    <ImageView
+        android:id="@+id/speechButtonProj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.428"
+        app:srcCompat="@android:drawable/ic_btn_speak_now" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

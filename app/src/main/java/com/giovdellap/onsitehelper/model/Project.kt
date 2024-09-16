@@ -4,7 +4,7 @@ import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Project(val editors: List<String>) {
+class Project(var editors: List<String>) {
     val _id: String = ""
     val id: String = ""
     val title: String = ""

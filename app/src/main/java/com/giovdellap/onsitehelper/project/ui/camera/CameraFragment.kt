@@ -30,8 +30,6 @@ import com.giovdellap.onsitehelper.R
 import com.giovdellap.onsitehelper.databinding.FragmentCameraBinding
 import com.giovdellap.onsitehelper.model.AddImageRequest
 import com.giovdellap.onsitehelper.model.AddImageResponse
-import com.giovdellap.onsitehelper.model.address
-import com.giovdellap.onsitehelper.model.imageServer
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
@@ -90,6 +88,7 @@ class CameraFragment : Fragment() {
 
         val context = requireContext().applicationContext
 
+        binding.backButton.text = "<"
 
         binding.backButton.setOnClickListener {
             Log.d("CAMERAFRAGMENT", "onViewCreated - backButton pressed")

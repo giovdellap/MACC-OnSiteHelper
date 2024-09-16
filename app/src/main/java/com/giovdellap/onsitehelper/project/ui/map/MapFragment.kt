@@ -10,13 +10,16 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.giovdellap.onsitehelper.R
 import com.giovdellap.onsitehelper.databinding.FragmentMapBinding
+import com.giovdellap.onsitehelper.model.Position
 import com.giovdellap.onsitehelper.model.PositionListResponse
-import com.giovdellap.onsitehelper.model.address
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.gson.Gson
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.HttpTimeout
@@ -48,6 +51,7 @@ class MapFragment : Fragment() {
         Log.d("TAG", "A")
 
         val sharedPreferences = requireContext().applicationContext.getSharedPreferences("OnSiteHelper", MODE_PRIVATE)
+        val address = sharedPreferences.getString("address", "")
         val us = sharedPreferences.getString("projectAuthor", "")
         val id_temp = sharedPreferences.getString("projectId", "")
         var user = ""
@@ -85,10 +89,24 @@ class MapFragment : Fragment() {
                     val latlng = LatLng(pos.latitude.toDouble(), pos.longitude.toDouble())
                     googleMap.addMarker(
                         MarkerOptions()
-                            .title(pos.title)
+                            .title(pos.id + " - " + pos.title)
                             .position(latlng)
                     )
                 }
+                googleMap.setOnMarkerClickListener(GoogleMap.OnMarkerClickListener { marker ->
+                    var selectedPos: Position = Position()
+                    for (pos in positions) {
+                        if (marker.title == (pos.id + " - " + pos.title)) selectedPos = pos
+                    }
+                    if (selectedPos.title != "") {
+                        Log.d("TAG", "project " + selectedPos.title)
+                        sharedPreferences.edit().putString("current_position", Gson().toJson(selectedPos)).apply()
+                        sharedPreferences.edit().putString("prevFragment", "MAP").apply()
+                        findNavController().navigate(R.id.action_Map_to_Detail)
+                    }
+                    true
+
+                })
             }
         }
     }

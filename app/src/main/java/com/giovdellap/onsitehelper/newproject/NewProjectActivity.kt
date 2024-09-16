@@ -2,9 +2,11 @@ package com.giovdellap.onsitehelper.newproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -15,7 +17,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.giovdellap.onsitehelper.R
 import com.giovdellap.onsitehelper.databinding.ActivityNewProjectBinding
 import com.giovdellap.onsitehelper.model.NewProjectRequest
-import com.giovdellap.onsitehelper.model.address
 import com.giovdellap.onsitehelper.projects.ProjectsActivity
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -28,6 +29,8 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.serialization.gson.gson
 import kotlinx.coroutines.launch
+import java.util.Locale
+import java.util.Objects
 
 class NewProjectActivity : AppCompatActivity() {
 
@@ -49,16 +52,50 @@ class NewProjectActivity : AppCompatActivity() {
 
         val sharedPreferences = this.getSharedPreferences("OnSiteHelper", MODE_PRIVATE)
         val user = sharedPreferences.getString("email", "")
+        val address = sharedPreferences.getString("address", "")
         var content = ""
         if (user != null) {
             content = user
         }
+
+        backButton.text = "<"
 
         backButton.setOnClickListener {
             val intent = Intent(this, ProjectsActivity::class.java)
             startActivity(intent)
         }
 
+        binding.speechButtonProj.setOnClickListener {
+            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+
+            // on below line we are passing language model
+            // and model free form in our intent
+            intent.putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+            )
+
+            // on below line we are passing our
+            // language as a default language.
+            intent.putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE,
+                Locale.getDefault()
+            )
+
+            // on below line we are specifying a prompt
+            // message as speak to text on below line.
+            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to text")
+
+            // on below line we are specifying a try catch block.
+            // in this block we are calling a start activity
+            // for result method and passing our result code.
+            try {
+                startActivityForResult(intent, 1)
+            } catch (e: Exception) {
+                // on below line we are displaying error message in toast
+                Toast.makeText(this, "speech to text", Toast.LENGTH_SHORT).show()
+            }
+        }
         submitButton.setOnClickListener {
 
             val title = titleForm.text.toString()
@@ -92,5 +129,29 @@ class NewProjectActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // in this method we are checking request
+        // code with our result code.
+        if (requestCode == 1) {
+            // on below line we are checking if result code is ok
+            Log.d("NEWPOSITIONFRAGMENT", resultCode.toString())
+            if (resultCode == RESULT_OK && data != null) {
+
+                // in that case we are extracting the
+                // data from our array list
+                val res: ArrayList<String> =
+                    data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
+
+                // on below line we are setting data
+                // to our output text view.
+                binding.descriptionEditText.setText(
+                    Objects.requireNonNull(res)[0]
+                )
+            }
+        }
     }
 }

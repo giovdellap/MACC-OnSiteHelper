@@ -6,4 +6,5 @@ class Position {
     var latitude: String = ""
     var longitude: String = ""
     var image: String = ""
+    var id: String = ""
 }

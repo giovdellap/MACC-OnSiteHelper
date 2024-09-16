@@ -12,9 +12,10 @@
 
         <TextView
             android:id="@+id/titleTextView"
-            android:layout_width="136dp"
-            android:layout_height="38dp"
-            android:text="Title"
+            android:layout_width="159dp"
+            android:layout_height="48dp"
+            android:textSize="30sp"
+            android:fontFamily="@font/montserrat_semibold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.486"
@@ -27,28 +28,30 @@
             android:layout_width="258dp"
             android:layout_height="182dp"
             android:text="Description"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:fontFamily="@font/montserrat_medium"
+
+        app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.585" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/detailImageView"
             android:layout_width="286dp"
             android:layout_height="278dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.145"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintVertical_bias="0.145" />
 
         <TextView
             android:id="@+id/longitudeTextView"
             android:layout_width="219dp"
             android:layout_height="38dp"
             android:text="Longitude"
+            android:fontFamily="@font/montserrat_medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.219"
@@ -61,6 +64,7 @@
             android:layout_width="221dp"
             android:layout_height="38dp"
             android:text="Latitude"
+            android:fontFamily="@font/montserrat_medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.219"
@@ -70,15 +74,18 @@
 
         <Button
             android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="67dp"
+            android:layout_height="55dp"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null"
+            android:background="@drawable/mybutton"
+            android:fontFamily="@font/montserrat_extrabold"            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.014"
+            app:layout_constraintHorizontal_bias="0.02"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.019" />
+            app:layout_constraintVertical_bias="0.009" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

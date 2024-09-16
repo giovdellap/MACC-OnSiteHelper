@@ -14,6 +14,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.commit
 import com.giovdellap.onsitehelper.databinding.ActivityMainBinding
+import com.giovdellap.onsitehelper.ipchoice.IPChoiceActivity
 import com.giovdellap.onsitehelper.signin.SignInActivity
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("TAG", "main before switch")
 
-        val intent = Intent(this, SignInActivity::class.java)
+        val intent = Intent(this, IPChoiceActivity::class.java)
         startActivity(intent)
     }
 

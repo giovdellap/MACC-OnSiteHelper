@@ -53,36 +53,35 @@ class SignInActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         Log.d("TAG", "Initialization completed")
 
-        val credentialManager: CredentialManager = CredentialManager.create(this)
+        val sharedPreferences = this.getSharedPreferences("OnSiteHelper", Context.MODE_PRIVATE)
+        val user = sharedPreferences.getString("email", "")
+        if (user != null && user != "") {
+            val intent = Intent(this, ProjectsActivity::class.java)
+            startActivity(intent)
+        }
 
+        val credentialManager: CredentialManager = CredentialManager.create(this)
         Log.d("TAG", "create credential manager")
 
         findViewById<View>(R.id.google_sign_in_button).setOnClickListener {
-
             val googleIdOption: GetSignInWithGoogleOption = GetSignInWithGoogleOption.Builder("626011010926-jhl0pjflckdpctmabcjmia2q8qprq1n6.apps.googleusercontent.com")
                 //.setNonce(<nonce string to use when generating a Google ID token>)
                 .setNonce(hashedNonce)
                 .build()
             Log.d("TAG", "Google ID Option created")
 
-
             val request: GetCredentialRequest = GetCredentialRequest.Builder()
                 .addCredentialOption(googleIdOption)
                 .build()
-
             Log.d("TAG", "Request created")
 
             val context = this.applicationContext
             lifecycleScope.launch {
-
                 Log.d("TAG", "Inside launch")
-
                 try {
                     Log.d("TAG", "Inside try")
-
                     val result = credentialManager.getCredential(
                         // Use an activity-based context to avoid undefined system UI
                         // launching behavior.
