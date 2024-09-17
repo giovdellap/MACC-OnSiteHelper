@@ -3,7 +3,7 @@
 ## Mobile Applications and Cloud Computing
 Project for the course of Visual Analytics A.A. 23/24 Student: Giovanni Della Pelle
 
-Backend repo link:
+### Backend repo link:
 https://github.com/giovdellap/MACC-backend
 
 ### Slides link:
