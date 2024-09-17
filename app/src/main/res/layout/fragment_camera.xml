@@ -19,12 +19,17 @@
             app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.121" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/backButton"
-            android:layout_width="48dp"
-            android:layout_height="50dp"
+            android:layout_width="62dp"
+            android:layout_height="61dp"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null"
+            android:background="@drawable/mybutton"
+            android:fontFamily="@font/montserrat_extrabold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.051"
@@ -32,18 +37,22 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.837" />
 
-        <Button
-            android:id="@+id/takephotobutton"
+        <ImageButton
+            android:id="@+id/takePhotoButton"
             android:layout_width="108dp"
             android:layout_height="96dp"
-            android:text="O"
-            android:textSize="70sp"
-            android:textStyle="bold"
+            android:contentDescription="aaaa"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null"
+            android:background="@drawable/mybutton"
+            android:fontFamily="@font/montserrat_extrabold"
+            android:src="@drawable/photo_camera_24px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.867" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

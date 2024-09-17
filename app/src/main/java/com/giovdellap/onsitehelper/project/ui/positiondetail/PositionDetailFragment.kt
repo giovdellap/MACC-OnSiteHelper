@@ -100,7 +100,7 @@ class PositionDetailFragment : Fragment() {
             Log.d(TAG, "in lifescope")
             val httpclient = HttpClient(CIO) {
                 install(HttpTimeout) {
-                    requestTimeoutMillis = 20000
+                    requestTimeoutMillis = 35000
                 }
             }
 

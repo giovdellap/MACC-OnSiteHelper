@@ -12,44 +12,43 @@
 
         <Button
             android:id="@+id/backbutton"
-            android:layout_width="229dp"
-            android:layout_height="73dp"
-            android:text="Back to Camera"
-            android:textColor="#FFFFFF"
-            app:backgroundTint="@null"
+            android:layout_width="231dp"
+            android:layout_height="65dp"
             android:background="@drawable/mybutton"
             android:fontFamily="@font/montserrat_extrabold"
+            android:text="BACK TO CAMERA"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.672" />
+            app:layout_constraintVertical_bias="0.731" />
 
         <Button
             android:id="@+id/savebutton"
             android:layout_width="230dp"
             android:layout_height="66dp"
-            android:text="Save in Position"
-            android:textColor="#FFFFFF"
-            app:backgroundTint="@null"
             android:background="@drawable/mybutton"
             android:fontFamily="@font/montserrat_extrabold"
+            android:text="SAVE IN POSITION"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.779" />
+            app:layout_constraintVertical_bias="0.856" />
 
         <ImageView
             android:id="@+id/imageViewPreview"
             android:layout_width="336dp"
-            android:layout_height="358dp"
+            android:layout_height="432dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.24" />
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

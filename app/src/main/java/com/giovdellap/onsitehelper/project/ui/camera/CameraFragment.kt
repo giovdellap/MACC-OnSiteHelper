@@ -14,6 +14,7 @@ import android.util.Base64
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Surface
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.MimeTypeMap
@@ -99,6 +100,7 @@ class CameraFragment : Fragment() {
         val imageCapture = ImageCapture.Builder()
             .build()
 
+
         cameraProviderFuture.addListener({
             // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
@@ -129,7 +131,7 @@ class CameraFragment : Fragment() {
         }, ContextCompat.getMainExecutor(requireContext().applicationContext))
         cameraExecutor = Executors.newSingleThreadExecutor()
 
-        binding.takephotobutton.setOnClickListener {
+        binding.takePhotoButton.setOnClickListener {
 
             Log.d("CAMERAFRAGMENT", "onViewCreated - takephotobutton pressed")
 
@@ -159,6 +161,7 @@ class CameraFragment : Fragment() {
                     override fun onError(exc: ImageCaptureException) {
                         Log.e("TAG", "Photo capture failed: ${exc.message}", exc)
                     }
+
                     override fun onImageSaved(output: ImageCapture.OutputFileResults){
 
                         val msg = "Photo capture succeeded: ${output.savedUri}"

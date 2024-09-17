@@ -7,8 +7,8 @@
 
     <TextView
         android:id="@+id/editorCardTextView"
-        android:layout_width="187dp"
-        android:layout_height="wrap_content"
+        android:layout_width="217dp"
+        android:layout_height="55dp"
         android:layout_weight="1"
         android:fontFamily="@font/montserrat_medium"
         android:text="TextView" />
@@ -18,9 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="@null"
         android:background="@drawable/mybutton"
         android:fontFamily="@font/montserrat_extrabold"
-        android:text="DELETE" />
+        android:text="DELETE"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@null" />
 </LinearLayout>

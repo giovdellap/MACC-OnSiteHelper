@@ -7,6 +7,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.os.FileUtils.copy
@@ -106,12 +107,12 @@ class ImagePreviewFragment : Fragment() {
                     copy(inputStream, oStream)
                 }
 
-                bm = BitmapFactory.decodeStream(FileInputStream(tempFile))
+                val bm_temp = BitmapFactory.decodeStream(FileInputStream(tempFile))
+                bm = rotateBitmap(bm_temp, 90.toFloat())
                 val baos = ByteArrayOutputStream()
                 bm.compress(Bitmap.CompressFormat.JPEG, 100, baos) //bm is the bitmap object
                 val b = baos.toByteArray()
                 encodedImage = Base64.encodeToString(b, Base64.DEFAULT)
-                Log.d(TAG, encodedImage)
 
                 oStream.flush()
                 Log.d(TAG, "OnviewCreated - after flush")
@@ -174,4 +175,11 @@ class ImagePreviewFragment : Fragment() {
         }
     }
 
+    fun rotateBitmap(source: Bitmap, degrees: Float): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(degrees)
+        return Bitmap.createBitmap(
+            source, 0, 0, source.width, source.height, matrix, true
+        )
+    }
 }

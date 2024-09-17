@@ -90,6 +90,7 @@ class IPChoiceActivity : AppCompatActivity() {
                     val response = httpclient.get(url)
 
                     if (response.status.value == 200) {
+                        Log.d("IPCHOICE", "200")
                         sharedPreferences.edit().putString("ip", ip).apply()
                         sharedPreferences.edit().putString("address", "http://" + ip + ":5001/macc").apply()
                         sharedPreferences.edit().putString("imageServer", "http://" + ip + ":9705").apply()
