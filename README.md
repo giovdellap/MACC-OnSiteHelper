@@ -1,7 +1,8 @@
 # OnSite Helper - android application repo
 
 ## Mobile Applications and Cloud Computing
-Project for the course of Visual Analytics A.A. 23/24 Student: Giovanni Della Pelle
+Project for the course of Visual Analytics A.A. 23/24  
+Student: Giovanni Della Pelle
 
 ### Backend repo link:
 https://github.com/giovdellap/MACC-backend
